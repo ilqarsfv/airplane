@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  outline: 0px;
+}
+#main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+}
+#check {
+  width: 110px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 40px;
+  position: relative;
+}
+#round {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  border-radius: 100%;
+  z-index: 3;
+  background-color: #fff;
+}
+#round.move {
+  animation: move 0.4s linear 0s forwards;
+}
+#round.moveLeft {
+  animation: moveLeft 0.4s linear 0s forwards;
+}
+#round.move #plane path {
+    fill: #0382ff !important;
+  }
+#plane {
+  transform: rotate(90deg);
+  position: absolute;
+}
+#road,#sky {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#road {
+    z-index: 1;
+    left: 0;
+    background-image: url("img/road.jpg");
+    background-size: cover;
+  }
+#sky {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("img/cloud.gif");
+  background-size: cover;
+  top: 0;
+  z-index: 2;
+  background-position: center;
+  opacity: 0;
+}
+#sky.fadeIn {
+  background-color: #00b8f3;
+  animation: fadeIn 0.4s linear forwards;
+}
+#sky.fadeOut,
+#road.fadeIn {
+  animation: fadeOut 0.4s linear forwards;
+}
+#road.fadeOut {
+  animation: fadeIn 0.4s forwards;
+}
+/* road and sky fadeIn/fadeOut */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* circle(range) move */
+@keyframes move {
+  0% {
+    right: 55%;
+  }
+  100% {
+    right: 0;
+  }
+}
+@keyframes moveLeft {
+  0% {
+    left: 55%;
+  }
+  100% {
+    left: 0;
+  }
+}
